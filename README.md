@@ -16,6 +16,6 @@
 **Contributors:** 
 
 Victor Paz de Farias Braga - https://www.github.com/victorpazb
-Wallyngson - hhtps://www.github.com/wallyngson
-Dascio - https://github.com/DacioSB
-Felipe Emanuel - https://github.com/FelipeEmanuel
+\nWallyngson - hhtps://www.github.com/wallyngson
+\nDascio - https://github.com/DacioSB
+\nFelipe Emanuel - https://github.com/FelipeEmanuel

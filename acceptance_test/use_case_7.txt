@@ -1,0 +1,56 @@
+## Persistencia dos dados do sistema ##
+
+## Fecha sistema salvando todos os dados da aplicacao em um arquivo ##
+
+finalizaSistema
+
+## Reinicia o sistema carregando tudo que foi salvo quando fechou sistema ##
+
+iniciaSistema
+
+
+## Lista itens para doar ##
+
+expect ${idItem17}" - jaqueta de couro, tags: [outfit, couro de boi, couro de bode], quantidade: 42, doador: Aramis Araujo/49847103331\
+ | "${idItem6}" - camiseta, tags: [outfit, algodao], quantidade: 25, doador: Cave Johnson/18304715242\
+ | "${idItem18}" - jaqueta de couro, tags: [frio, estilo], quantidade: 21, doador: Claudio Campelo/58791093499\
+ | "${idItem7}" - cadeira de praia, tags: [dobravel], quantidade: 15, doador: Elizabeth Ashe/70513372911\
+ | "${idItem15}" - cadeira de rodas, tags: [roda grande, 80kg, conforto], quantidade: 15, doador: Cave Johnson/18304715242\
+ | "${idItem21}" - camiseta, tags: [M, esporte], quantidade: 15, doador: Aramis Araujo/49847103331\
+ | "${idItem3}" - cobertor, tags: [lencol, conforto], quantidade: 15, doador: Aramis Araujo/49847103331\
+ | "${idItem20}" - cadeira de rodas, tags: [eletrico, roda grande], quantidade: 13, doador: Arthur Morgan/52641947613\
+ | "${idItem13}" - colchao, tags: [dormir, conforto], quantidade: 7, doador: Satya Vaswani/59238650111\
+ | "${idItem8}" - cadeira de alimentacao, tags: [35kg, infantil], quantidade: 5, doador: Cave Johnson/18304715242\
+ | "${idItem2}" - colchao, tags: [colchao kingsize, conforto, dormir], quantidade: 5, doador: Elizabeth Ashe/70513372911\
+ | "${idItem5}" - jaqueta de couro, tags: [outfit, couro de cobra], quantidade: 5, doador: Carlos Eduardo/12094912484\
+ | "${idItem9}" - cadeira reclinavel, tags: [couro], quantidade: 4, doador: Arthur Morgan/52641947613\
+ | "${idItem11}" - calca jeans, tags: [], quantidade: 3, doador: Arthur Morgan/52641947613\
+ | "${idItem14}" - colchao, tags: [colchao kingsize, dormir], quantidade: 3, doador: Lucas Fernandes/13507190272\
+ | "${idItem1}" - cadeira de rodas, tags: [roda grande, cadeira], quantidade: 2, doador: Claudio Campelo/58791093499\
+ | "${idItem16}" - cadeira de rodas, tags: [roda grande, eletrico, 80kg], quantidade: 1, doador: Paroquia de Nossa Senhora da Conceicao/08704413000240" listaItensParaDoacao
+
+## Lista itens necessitados ##
+
+expect ${itemNecId1}" - livro, tags: [Infantil, Matematica], quantidade: 8, Receptor: Murilo Luiz Brito/84473712044\
+ | "${itemNecId2}" - toalha de banho, tags: [Infantil, TAM P], quantidade: 5, Receptor: Sonia Daniela/31862316040\
+ | "${itemNecId3}" - toalha de banho, tags: [Adulto, TAM G, Azul], quantidade: 2, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId4}" - frauda, tags: [Higiene, Infantil, P], quantidade: 15, Receptor: Luiza Elisa Lopes/72859801000118\
+ | "${itemNecId5}" - frauda, tags: [Higiene, Infantil, M], quantidade: 10, Receptor: Cristiane Isabella Caldeira/87831113000117\
+ | "${itemNecId7}" - alimento, tags: [Alimentacao, Saude], quantidade: 5, Receptor: Lucca Iago/57091431030\
+ | "${itemNecId8}" - sabonete, tags: [Higiene], quantidade: 8, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId9}" - livro, tags: [], quantidade: 1, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId11}" - colchao, tags: [colchao kingsize, conforto], quantidade: 10, Receptor: Murilo Luiz Brito/84473712044\
+ | "${itemNecId14}" - camiseta, tags: [outfit, poliester, roupa], quantidade: 12, Receptor: Murilo Luiz Brito/84473712044" listaItensNecessarios
+
+## Lista possiveis matchs de um item ##
+
+expect ${idItem2}" - colchao, tags: [colchao kingsize, conforto, dormir], quantidade: 5, doador: Elizabeth Ashe/70513372911\
+ | "${idItem13}" - colchao, tags: [dormir, conforto], quantidade: 7, doador: Satya Vaswani/59238650111\
+ | "${idItem14}" - colchao, tags: [colchao kingsize, dormir], quantidade: 3, doador: Lucas Fernandes/13507190272" match idReceptor="84473712044" idItemNecessario=${itemNecId11}
+
+## Listando doacoes ##
+
+expect "30/06/2013 - doador: Aramis Araujo/49847103331, item: jaqueta de couro, quantidade: 3, receptor: Antonella Sonia Moraes/32719454000103\
+ | 15/09/2016 - doador: Lucas Fernandes/13507190272, item: camiseta, quantidade: 100, receptor: Murilo Luiz Brito/84473712044\
+ | 15/09/2016 - doador: Satya Vaswani/59238650111, item: travesseiro, quantidade: 10, receptor: Rafaela Beatriz/51567490000143\
+ | 11/10/2018 - doador: Cave Johnson/18304715242, item: cadeira de rodas, quantidade: 7, receptor: Luiza Elisa Lopes/72859801000118" listaDoacoes

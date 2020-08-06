@@ -1,0 +1,30 @@
+## Listando descritores ##
+
+expect "5 - cadeira de alimentacao | 15 - cadeira de praia | 2 - cadeira de rodas\
+ | 4 - cadeira reclinavel | 3 - calca jeans | 25 - camiseta | 15 - cobertor | 5 - colchao\
+ | 0 - computador | 0 - curso de programacao | 0 - escova de dente | 5 - jaqueta de couro\
+ | 0 - playstation 4 | 0 - televisao | 10 - travesseiro" listaDescritorDeItensParaDoacao
+ 
+## Listando itens ##
+
+expect ${idItem6}" - camiseta, tags: [outfit, algodao], quantidade: 25, doador: Cave Johnson/18304715242\
+ | "${idItem7}" - cadeira de praia, tags: [dobravel], quantidade: 15, doador: Elizabeth Ashe/70513372911\
+ | "${idItem3}" - cobertor, tags: [lencol, conforto], quantidade: 15, doador: Aramis Araujo/49847103331\
+ | "${idItem4}" - travesseiro, tags: [travesseiro de pena], quantidade: 10, doador: Satya Vaswani/59238650111\
+ | "${idItem8}" - cadeira de alimentacao, tags: [35kg, infantil], quantidade: 5, doador: Cave Johnson/18304715242\
+ | "${idItem2}" - colchao, tags: [colchao kingsize, conforto, dormir], quantidade: 5, doador: Elizabeth Ashe/70513372911\
+ | "${idItem5}" - jaqueta de couro, tags: [outfit, couro de cobra], quantidade: 5, doador: Carlos Eduardo/12094912484\
+ | "${idItem9}" - cadeira reclinavel, tags: [couro], quantidade: 4, doador: Arthur Morgan/52641947613\
+ | "${idItem11}" - calca jeans, tags: [], quantidade: 3, doador: Arthur Morgan/52641947613\
+ | "${idItem1}" - cadeira de rodas, tags: [roda grande, cadeira], quantidade: 2, doador: Claudio Campelo/58791093499" listaItensParaDoacao
+ 
+ 
+## Pesquisando itens ##
+
+expect ${idItem8}" - cadeira de alimentacao, tags: [35kg, infantil], quantidade: 5\
+ | "${idItem7}" - cadeira de praia, tags: [dobravel], quantidade: 15\
+ | "${idItem1}" - cadeira de rodas, tags: [roda grande, cadeira], quantidade: 2\
+ | "${idItem9}" - cadeira reclinavel, tags: [couro], quantidade: 4" pesquisaItemParaDoacaoPorDescricao desc="cadeira"
+ 
+expectError "Entrada invalida: texto da pesquisa nao pode ser vazio ou nulo." pesquisaItemParaDoacaoPorDescricao desc=""
+expectError "Entrada invalida: texto da pesquisa nao pode ser vazio ou nulo." pesquisaItemParaDoacaoPorDescricao desc=

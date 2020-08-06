@@ -1,0 +1,46 @@
+## Atualizando alguns itens ##
+
+expect ${itemNecId14}" - camiseta, tags: [outfit, poliester, roupa], quantidade: 112" atualizaItemNecessario idReceptor="84473712044" idItem=${itemNecId14} novaQuantidade=112 novasTags=
+expect ${itemNecId13}" - travesseiro, tags: [travesseiro de pena, conforto, dormir], quantidade: 10" atualizaItemNecessario idReceptor="51567490000143" idItem=${itemNecId13} novaQuantidade=10 novasTags=
+
+## Realizando doacoes ##
+
+expect "11/10/2018 - doador: Cave Johnson/18304715242, item: cadeira de rodas, quantidade: 7, receptor: Luiza Elisa Lopes/72859801000118" realizaDoacao idItemNec=${itemNecId10} idItemDoado=${idItem15} data="11/10/2018"
+expect "15/09/2016 - doador: Lucas Fernandes/13507190272, item: camiseta, quantidade: 100, receptor: Murilo Luiz Brito/84473712044" realizaDoacao idItemNec=${itemNecId14} idItemDoado=${idItem19} data="15/09/2016"
+expect "15/09/2016 - doador: Satya Vaswani/59238650111, item: travesseiro, quantidade: 10, receptor: Rafaela Beatriz/51567490000143" realizaDoacao idItemNec=${itemNecId13} idItemDoado=${idItem4} data="15/09/2016"
+expect "30/06/2013 - doador: Aramis Araujo/49847103331, item: jaqueta de couro, quantidade: 3, receptor: Antonella Sonia Moraes/32719454000103" realizaDoacao idItemNec=${itemNecId12} idItemDoado=${idItem17} data="30/06/2013"
+
+expectError "Entrada invalida: id do item nao pode ser negativo." realizaDoacao idItemNec=-42 idItemDoado=${idItem15} data="01/10/2008"
+expectError "Entrada invalida: id do item nao pode ser negativo." realizaDoacao idItemNec=${itemNecId1} idItemDoado=-9 data="12/12/2018"
+expectError "Item nao encontrado: 1999992." realizaDoacao idItemNec=1999992 idItemDoado=${idItem11} data="21/09/2015"
+expectError "Item nao encontrado: 124." realizaDoacao idItemNec=${itemNecId1} idItemDoado=124 data="13/12/2017"
+expectError "Os itens nao tem descricoes iguais." realizaDoacao idItemNec=${itemNecId1} idItemDoado=${idItem7} data="10/01/2003"
+expectError "Os itens nao tem descricoes iguais." realizaDoacao idItemNec=${itemNecId1} idItemDoado=${idItem18} data="13/08/2018"
+expectError "Entrada invalida: data nao pode ser vazia ou nula." realizaDoacao idItemNec=${itemNecId1} idItemDoado=${idItem14} data=""
+expectError "Entrada invalida: data nao pode ser vazia ou nula." realizaDoacao idItemNec=${itemNecId1} idItemDoado=${idItem13} data=
+
+## Testando novos valores ##
+
+expect ${idItem15}" - cadeira de rodas, tags: [roda grande, 80kg, conforto], quantidade: 15" exibeItem id=${idItem15} idDoador=${id4}
+expect ${idItem17}" - jaqueta de couro, tags: [outfit, couro de boi, couro de bode], quantidade: 42" exibeItem id=${idItem17} idDoador=${id8}
+expectError "Item nao encontrado: "${idItem19}"." exibeItem id=${idItem19} idDoador=${id6}
+expectError "Item nao encontrado: "${idItem4}"." exibeItem id=${idItem4} idDoador=${id2}
+
+expect ${itemNecId1}" - livro, tags: [Infantil, Matematica], quantidade: 8, Receptor: Murilo Luiz Brito/84473712044\
+ | "${itemNecId2}" - toalha de banho, tags: [Infantil, TAM P], quantidade: 5, Receptor: Sonia Daniela/31862316040\
+ | "${itemNecId3}" - toalha de banho, tags: [Adulto, TAM G, Azul], quantidade: 2, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId4}" - frauda, tags: [Higiene, Infantil, P], quantidade: 15, Receptor: Luiza Elisa Lopes/72859801000118\
+ | "${itemNecId5}" - frauda, tags: [Higiene, Infantil, M], quantidade: 10, Receptor: Cristiane Isabella Caldeira/87831113000117\
+ | "${itemNecId7}" - alimento, tags: [Alimentacao, Saude], quantidade: 5, Receptor: Lucca Iago/57091431030\
+ | "${itemNecId8}" - sabonete, tags: [Higiene], quantidade: 8, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId9}" - livro, tags: [], quantidade: 1, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId11}" - colchao, tags: [colchao kingsize, conforto], quantidade: 10, Receptor: Murilo Luiz Brito/84473712044\
+ | "${itemNecId14}" - camiseta, tags: [outfit, poliester, roupa], quantidade: 12, Receptor: Murilo Luiz Brito/84473712044" listaItensNecessarios
+ 
+## Listando doacoes ##
+
+expect "30/06/2013 - doador: Aramis Araujo/49847103331, item: jaqueta de couro, quantidade: 3, receptor: Antonella Sonia Moraes/32719454000103\
+ | 15/09/2016 - doador: Lucas Fernandes/13507190272, item: camiseta, quantidade: 100, receptor: Murilo Luiz Brito/84473712044\
+ | 15/09/2016 - doador: Satya Vaswani/59238650111, item: travesseiro, quantidade: 10, receptor: Rafaela Beatriz/51567490000143\
+ | 11/10/2018 - doador: Cave Johnson/18304715242, item: cadeira de rodas, quantidade: 7, receptor: Luiza Elisa Lopes/72859801000118" listaDoacoes
+ 

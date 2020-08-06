@@ -1,0 +1,85 @@
+## Lendo os arquivos dos receptores ##
+
+lerReceptores caminho="arquivos_sistema/novosReceptores.csv"
+
+## Adicionando doadores ##
+
+id1=adicionaDoador id=70513372911 nome="Elizabeth Ashe" email="elizabethcalamity@deadlock.com" celular="(83) 92918-0211" classe="PESSOA_FISICA" 
+id2=adicionaDoador id=59238650111 nome="Satya Vaswani" email="satya@vishkarcorp.com" celular="(83) 99221-2571" classe="PESSOA_FISICA"
+id3=adicionaDoador id=52641947613 nome="Arthur Morgan" email="arthur.morgan@vanderlyne.com" celular="(63) 99983-1899" classe="PESSOA_FISICA"
+id4=adicionaDoador id=18304715242 nome="Cave Johnson" email="cave@aperturescience.com" celular="(83) 99831-2011" classe="PESSOA_FISICA"
+id5=adicionaDoador id=50270271338 nome="Vaas Montenegro" email="vaas@rook.com" celular="(83) 99348-2481" classe="PESSOA_FISICA"
+id6=adicionaDoador id=13507190272 nome="Lucas Fernandes" email="lucas.fernandes@gmail.com" celular="(83) 99982-9231" classe="PESSOA_FISICA"
+id7=adicionaDoador id=12094912484 nome="Carlos Eduardo" email="cadoca@gmail.com" celular="(83) 98413-3289" classe="PESSOA_FISICA"
+id8=adicionaDoador id=49847103331 nome="Aramis Araujo" email="aramis@gmail.com" celular="(83) 98249-1298" classe="PESSOA_FISICA"
+id9=adicionaDoador id=58791093499 nome="Claudio Campelo" email="campelao@gmail.com" celular="(83) 92413-3821" classe="PESSOA_FISICA"
+id10=adicionaDoador id=10357071312 nome="Lucas Fernandes" email="amigao@gmail.com" celular="(83) 94813-4871" classe="PESSOA_FISICA"
+id11=adicionaDoador id=08704413000240 nome="Paroquia de Nossa Senhora da Conceicao" email="paroquia.da.conceicao@gmail.com" celular="(83) 3321-3140" classe="IGREJA"
+
+expectError "Entrada invalida: nome nao pode ser vazio ou nulo." adicionaDoador id=39284182311 nome="" email="amelie@talon.com" celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Entrada invalida: nome nao pode ser vazio ou nulo." adicionaDoador id=39284182311 nome= email="amelie@talon.com" celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Entrada invalida: email nao pode ser vazio ou nulo." adicionaDoador id=39284182311 nome="Amelie Lacroix" email="" celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Entrada invalida: email nao pode ser vazio ou nulo." adicionaDoador id=39284182311 nome="Amelie Lacroix" email= celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Entrada invalida: celular nao pode ser vazio ou nulo." adicionaDoador id=39284182311 nome="Amelie Lacroix" email="amelie@talon.com" celular="" classe="PESSOA_FISICA"
+expectError "Entrada invalida: celular nao pode ser vazio ou nulo." adicionaDoador id=39284182311 nome="Amelie Lacroix" email="amelie@talon.com" celular= classe="PESSOA_FISICA"
+expectError "Entrada invalida: classe nao pode ser vazia ou nula." adicionaDoador id=39284182311 nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="" 
+expectError "Entrada invalida: opcao de classe invalida." adicionaDoador id=39284182311 nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="EMPRESA"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." adicionaDoador id="" nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." adicionaDoador id= nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Usuario ja existente: "${id1}"." adicionaDoador id=${id1} nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="PESSOA_FISICA"
+expectError "Usuario ja existente: 80687834000156." adicionaDoador id=80687834000156 nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="ONG"
+expectError "Usuario ja existente: 24875800037." adicionaDoador id=24875800037 nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811" classe="PESSOA_FISICA" 
+
+## Pesquisando usuarios ##
+
+expect "Elizabeth Ashe/70513372911, elizabethcalamity@deadlock.com, (83) 92918-0211, status: doador" pesquisaUsuarioPorId id=${id1}
+expect "Satya Vaswani/59238650111, satya@vishkarcorp.com, (83) 99221-2571, status: doador" pesquisaUsuarioPorId id=${id2}
+expect "Arthur Morgan/52641947613, arthur.morgan@vanderlyne.com, (63) 99983-1899, status: doador" pesquisaUsuarioPorId id=${id3}
+expect "Cave Johnson/18304715242, cave@aperturescience.com, (83) 99831-2011, status: doador" pesquisaUsuarioPorId id=${id4}
+expect "Vaas Montenegro/50270271338, vaas@rook.com, (83) 99348-2481, status: doador" pesquisaUsuarioPorId id=${id5}
+expect "Lucas Fernandes/13507190272, lucas.fernandes@gmail.com, (83) 99982-9231, status: doador" pesquisaUsuarioPorId id=${id6}
+expect "Paroquia de Nossa Senhora da Conceicao/08704413000240, paroquia.da.conceicao@gmail.com, (83) 3321-3140, status: doador" pesquisaUsuarioPorId id=${id11}
+expect "Mirella Vera da Paz/98624406000140, mirellaveradapaz-90@marcossousa.com, (67) 99164-0977, status: receptor" pesquisaUsuarioPorId id=98624406000140
+expect "Sonia Daniela/31862316040, soniadanielanogueira@danielvasconcelos.com.br, (31) 98874-9311, status: receptor" pesquisaUsuarioPorId id=31862316040
+
+
+expect "Carlos Eduardo/12094912484, cadoca@gmail.com, (83) 98413-3289, status: doador" pesquisaUsuarioPorNome nome="Carlos Eduardo"
+expect "Aramis Araujo/49847103331, aramis@gmail.com, (83) 98249-1298, status: doador" pesquisaUsuarioPorNome nome="Aramis Araujo"
+expect "Luiza Elisa Lopes/72859801000118, luizaelisalopes-92@raninho.com.br, (63) 98796-9125, status: receptor" pesquisaUsuarioPorNome nome="Luiza Elisa Lopes"
+expect "Claudio Campelo/58791093499, campelao@gmail.com, (83) 92413-3821, status: doador" pesquisaUsuarioPorNome nome="Claudio Campelo"
+expect "Lucas Fernandes/85618414490, lucasoliveira@gmail.com, (83) 99845-9283, status: receptor\
+ | Lucas Fernandes/13507190272, lucas.fernandes@gmail.com, (83) 99982-9231, status: doador\
+ | Lucas Fernandes/10357071312, amigao@gmail.com, (83) 94813-4871, status: doador" pesquisaUsuarioPorNome nome="Lucas Fernandes"
+ 
+expectError "Entrada invalida: nome nao pode ser vazio ou nulo." pesquisaUsuarioPorNome nome=
+expectError "Entrada invalida: nome nao pode ser vazio ou nulo." pesquisaUsuarioPorNome nome=""
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." pesquisaUsuarioPorId id=
+expectError "Usuario nao encontrado: Hammond." pesquisaUsuarioPorNome nome="Hammond"
+expectError "Usuario nao encontrado: 19048248108." pesquisaUsuarioPorId id=19048248108
+ 
+## Atualizando usuarios ##
+
+lerReceptores caminho="arquivos_sistema/atualizaReceptores.csv"
+
+expect "Lucas Oliveira/10357071312, amigao@gmail.com, (83) 94813-4871, status: doador" atualizaUsuario id=${id10} nome="Lucas Oliveira" email= celular=
+expect "Arthur Morgan/52641947613, morgan.arthur@vanderlyne.com, (63) 99983-1899, status: doador" atualizaUsuario id=${id3} nome= email="morgan.arthur@vanderlyne.com" celular=
+expect "Cave Johnson/18304715242, cave@aperturescience.com, (83) 99899-2011, status: doador" atualizaUsuario id=${id4} nome= email= celular="(83) 99899-2011"
+expect "Paroquia de Nossa Senhora da Conceicao/08704413000240, conceicao@gmail.com, (83) 3321-3140, status: doador" atualizaUsuario id=${id11} nome= email="conceicao@gmail.com" celular=
+expect "Elizabeth Ashe/70513372911, elizabethcalamity@deadlock.com, (83) 92918-0211, status: doador" atualizaUsuario id=${id1} nome= email= celular=
+expect "Satya Vaswani/59238650111, satya@vishkarcorp.com, (83) 99221-2571, status: doador" atualizaUsuario id=${id2} nome="" email="" celular=""
+expect "Luiza Elisa Lopes/72859801000118, luizalopes-42@raninho.com.br, (63) 98796-9125, status: receptor" pesquisaUsuarioPorNome nome="Luiza Elisa Lopes"
+expect "Mirella Vera da Paz/98624406000140, mirelladapaz-80@marcossousa.com, (67) 99944-0977, status: receptor" pesquisaUsuarioPorId id=98624406000140
+expect "Victor Benedito/39779848029, victorbenedito@smbcontabil.com.br, (91) 99788-3412, status: receptor" pesquisaUsuarioPorId id=39779848029
+
+expectError "Usuario nao encontrado: 19048248108." atualizaUsuario id=19048248108 nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." atualizaUsuario id= nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." atualizaUsuario id="" nome="Amelie Lacroix" email="amelie@talon.com" celular="(83) 98331-9811"
+
+## Removendo usuarios ##
+
+removeUsuario id=${id10}
+removeUsuario id=85618414490
+
+expectError "Usuario nao encontrado: "${id10}"." removeUsuario id=${id10}
+expectError "Usuario nao encontrado: 85618414490." removeUsuario id=85618414490
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." removeUsuario id=

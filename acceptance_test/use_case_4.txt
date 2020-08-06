@@ -1,0 +1,77 @@
+### Adicionando mais alguns descritores  ##
+
+adicionaDescritor descricao="Livro"
+adicionaDescritor descricao="Toalha de Banho"
+adicionaDescritor descricao="Frauda"
+adicionaDescritor descricao="Talheres"
+adicionaDescritor descricao="Verduras"
+adicionaDescritor descricao="Sabonete"
+
+## Adicao de itens necessarios associados a usuarios receptores ##
+
+itemNecId1=adicionaItemNecessario idReceptor="84473712044" descricaoItem="Livro" quantidade=1 tags="Infantil,Matematica,Didatico"
+itemNecId2=adicionaItemNecessario idReceptor="31862316040" descricaoItem="Toalha de Banho" quantidade=2 tags="Adulto,TAM G,Azul"
+itemNecId3=adicionaItemNecessario idReceptor="24875800037" descricaoItem="Toalha de Banho" quantidade=1 tags="Adulto,TAM G,Branca"
+itemNecId4=adicionaItemNecessario idReceptor="72859801000118" descricaoItem="Frauda" quantidade=15 tags="Higiene,Infantil,P"
+itemNecId5=adicionaItemNecessario idReceptor="87831113000117" descricaoItem="Frauda" quantidade=10 tags="Higiene,Infantil,M"
+itemNecId6=adicionaItemNecessario idReceptor="72859801000118" descricaoItem="Frauda" quantidade=30 tags="Higiene,Adulto,GG"
+itemNecId7=adicionaItemNecessario idReceptor="57091431030" descricaoItem="Alimento" quantidade=5 tags="Alimentacao,Saude"
+itemNecId8=adicionaItemNecessario idReceptor="24875800037" descricaoItem="Sabonete" quantidade=8 tags="Higiene"
+itemNecId9=adicionaItemNecessario idReceptor="24875800037" descricaoItem="Livro" quantidade=1 tags=""
+itemNecId10=adicionaItemNecessario idReceptor="72859801000118" descricaoItem="cAdEiRa de RoDaS" quantidade=7 tags="roda grande,80kg,conforto"
+itemNecId11=adicionaItemNecessario idReceptor="84473712044" descricaoItem="COLCHAO" quantidade=6 tags="colchao kingsize,conforto"
+itemNecId12=adicionaItemNecessario idReceptor="32719454000103" descricaoItem="jaqueta de couro" quantidade=3 tags="outfit,couro de bode"
+itemNecId13=adicionaItemNecessario idReceptor="51567490000143" descricaoItem="travesseiro" quantidade=2 tags="travesseiro de pena,conforto,dormir"
+itemNecId14=adicionaItemNecessario idReceptor="84473712044" descricaoItem="camiseta" quantidade=11 tags="outfit,poliester,roupa"
+itemNecId1=adicionaItemNecessario idReceptor="84473712044" descricaoItem="Livro" quantidade=3 tags="Infantil,Matematica,Didatico"
+
+expectError "Entrada invalida: descricao nao pode ser vazia ou nula." adicionaItemNecessario idReceptor="84473712044" descricaoItem="" quantidade=5 tags="Didatico,Portugues,Infantil"
+expectError "Entrada invalida: descricao nao pode ser vazia ou nula." adicionaItemNecessario idReceptor="84473712044" descricaoItem= quantidade=5 tags="Didatico,Portugues,Infantil"
+expectError "Entrada invalida: quantidade deve ser maior que zero." adicionaItemNecessario idReceptor="57091431030" descricaoItem="Legumes" quantidade=-2 tags="Alimentacao"
+expectError "Entrada invalida: quantidade deve ser maior que zero." adicionaItemNecessario idReceptor="57091431030" descricaoItem="Legumes" quantidade=0 tags="Alimentacao"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." adicionaItemNecessario idReceptor="" descricaoItem="Verduras" quantidade=10 tags="Alimentacao"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." adicionaItemNecessario idReceptor= descricaoItem="Verduras" quantidade=10 tags="Alimentacao"
+
+## Listagem de itens necessarios ##
+
+expect ${itemNecId1}" - livro, tags: [Infantil, Matematica, Didatico], quantidade: 3, Receptor: Murilo Luiz Brito/84473712044\
+ | "${itemNecId2}" - toalha de banho, tags: [Adulto, TAM G, Azul], quantidade: 2, Receptor: Sonia Daniela/31862316040\
+ | "${itemNecId3}" - toalha de banho, tags: [Adulto, TAM G, Branca], quantidade: 1, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId4}" - frauda, tags: [Higiene, Infantil, P], quantidade: 15, Receptor: Luiza Elisa Lopes/72859801000118\
+ | "${itemNecId5}" - frauda, tags: [Higiene, Infantil, M], quantidade: 10, Receptor: Cristiane Isabella Caldeira/87831113000117\
+ | "${itemNecId6}" - frauda, tags: [Higiene, Adulto, GG], quantidade: 30, Receptor: Luiza Elisa Lopes/72859801000118\
+ | "${itemNecId7}" - alimento, tags: [Alimentacao, Saude], quantidade: 5, Receptor: Lucca Iago/57091431030\
+ | "${itemNecId8}" - sabonete, tags: [Higiene], quantidade: 8, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId9}" - livro, tags: [], quantidade: 1, Receptor: Sara Jennifer Vieira/24875800037\
+ | "${itemNecId10}" - cadeira de rodas, tags: [roda grande, 80kg, conforto], quantidade: 7, Receptor: Luiza Elisa Lopes/72859801000118\
+ | "${itemNecId11}" - colchao, tags: [colchao kingsize, conforto], quantidade: 6, Receptor: Murilo Luiz Brito/84473712044\
+ | "${itemNecId12}" - jaqueta de couro, tags: [outfit, couro de bode], quantidade: 3, Receptor: Antonella Sonia Moraes/32719454000103\
+ | "${itemNecId13}" - travesseiro, tags: [travesseiro de pena, conforto, dormir], quantidade: 2, Receptor: Rafaela Beatriz/51567490000143\
+ | "${itemNecId14}" - camiseta, tags: [outfit, poliester, roupa], quantidade: 11, Receptor: Murilo Luiz Brito/84473712044" listaItensNecessarios
+
+## Atualizacao de itens necessarios ##
+
+expect ${itemNecId1}" - livro, tags: [Infantil, Matematica], quantidade: 3" atualizaItemNecessario idReceptor="84473712044" idItem=${itemNecId1} novaQuantidade=0 novasTags="Infantil,Matematica"
+expect ${itemNecId1}" - livro, tags: [Infantil, Matematica], quantidade: 8" atualizaItemNecessario idReceptor="84473712044" idItem=${itemNecId1} novaQuantidade=8 novasTags=
+expect ${itemNecId2}" - toalha de banho, tags: [Infantil, TAM P], quantidade: 2" atualizaItemNecessario idReceptor="31862316040" idItem=${itemNecId2} novaQuantidade=-5 novasTags="Infantil,TAM P"
+expect ${itemNecId2}" - toalha de banho, tags: [Infantil, TAM P], quantidade: 5" atualizaItemNecessario idReceptor="31862316040" idItem=${itemNecId2} novaQuantidade=5 novasTags=
+expect ${itemNecId3}" - toalha de banho, tags: [Adulto, TAM G, Azul], quantidade: 2" atualizaItemNecessario idReceptor="24875800037" idItem=${itemNecId3} novaQuantidade=2 novasTags="Adulto,TAM G,Azul"
+expect ${itemNecId11}" - colchao, tags: [colchao kingsize, conforto], quantidade: 10" atualizaItemNecessario idReceptor="84473712044" idItem=${itemNecId11} novaQuantidade=10 novasTags=""
+expect ${itemNecId4}" - frauda, tags: [Higiene, Infantil, P], quantidade: 15" atualizaItemNecessario idReceptor="72859801000118" idItem=${itemNecId4} novaQuantidade=0 novasTags=
+
+expectError "Usuario nao encontrado: 12121212121." atualizaItemNecessario idReceptor="12121212121" idItem=${itemNecId1} novaQuantidade=4 novasTags="Infantil,Matematica"
+expectError "Entrada invalida: id do item nao pode ser negativo." atualizaItemNecessario idReceptor="84473712044" idItem=-5 novaQuantidade=2 novasTags="Infantil,Matematica"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." atualizaItemNecessario idReceptor="" idItem=${itemNecId1} novaQuantidade=6 novasTags="Saude mental"
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." atualizaItemNecessario idReceptor= idItem=${itemNecId1} novaQuantidade=6 novasTags="Saude mental"
+expectError "Item nao encontrado: 150." atualizaItemNecessario idReceptor=84473712044 idItem=150 novaQuantidade=6 novasTags="Saude mental"
+
+## Remocao de itens necessarios ## 
+
+removeItemNecessario idReceptor="72859801000118" idItem=${itemNecId6}
+
+expectError "Item nao encontrado: "${itemNecId6}"." removeItemNecessario idReceptor="72859801000118" idItem=${itemNecId6}
+expectError "Usuario nao encontrado: 12121212121." removeItemNecessario idReceptor="12121212121" idItem=${itemNecId2}
+expectError "Entrada invalida: id do item nao pode ser negativo." removeItemNecessario idReceptor="84473712044" idItem=-5
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." removeItemNecessario idReceptor="" idItem=${itemNecId3}
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." removeItemNecessario idReceptor= idItem=${itemNecId3}
+expectError "O Usuario nao possui itens cadastrados." removeItemNecessario idReceptor="02247773000100" idItem=${itemNecId4}

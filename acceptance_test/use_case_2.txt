@@ -1,0 +1,83 @@
+## Adicionando descritores ##
+
+adicionaDescritor descricao="cadeira de rodas"
+adicionaDescritor descricao="curso de programacao"
+adicionaDescritor descricao="Cobertor"
+adicionaDescritor descricao="jaqueta de couro"
+adicionaDescritor descricao="Playstation 4"
+adicionaDescritor descricao="cadeira de alimentacao"
+adicionaDescritor descricao="televisao"
+adicionaDescritor descricao="Escova De Dente"
+adicionaDescritor descricao="camiseta"
+adicionaDescritor descricao="cadeira reclinavel"
+adicionaDescritor descricao="travesseiro"
+adicionaDescritor descricao="Colchao"
+
+expectError "Entrada invalida: descricao nao pode ser vazia ou nula." adicionaDescritor descricao=""
+expectError "Entrada invalida: descricao nao pode ser vazia ou nula." adicionaDescritor descricao=
+expectError "Descritor de Item ja existente: curso de programacao." adicionaDescritor descricao="curso de programacao"
+expectError "Descritor de Item ja existente: jaqueta de couro." adicionaDescritor descricao="Jaqueta de Couro"
+
+
+## Adicionando itens ##
+
+idItem1=adicionaItemParaDoacao idDoador=${id9} descricaoItem="cadeira de rodas" quantidade=5 tags="roda grande,cadeira"
+idItem2=adicionaItemParaDoacao idDoador=${id1} descricaoItem="colchao" quantidade=5 tags="colchao kingsize,conforto,dormir" 
+idItem3=adicionaItemParaDoacao idDoador=${id8} descricaoItem="cobertor" quantidade=10 tags="lencol,conforto"
+idItem4=adicionaItemParaDoacao idDoador=${id2} descricaoItem="travesseiro" quantidade=10 tags="travesseiro de pena"
+idItem5=adicionaItemParaDoacao idDoador=${id7} descricaoItem="jaqueta de couro" quantidade=5 tags="outfit,couro de jacare"
+idItem6=adicionaItemParaDoacao idDoador=${id4} descricaoItem="camiseta" quantidade=25 tags="outfit,algodao"
+idItem7=adicionaItemParaDoacao idDoador=${id1} descricaoItem="cadeira de praia" quantidade=15 tags="dobravel"
+idItem8=adicionaItemParaDoacao idDoador=${id4} descricaoItem="cadeira de alimentacao" quantidade=5 tags="25kg,infantil"
+idItem9=adicionaItemParaDoacao idDoador=${id3} descricaoItem="cadeira reclinavel" quantidade=4 tags="couro"
+idItem10=adicionaItemParaDoacao idDoador=${id9} descricaoItem="computador" quantidade=2 tags="all-in-one"
+idItem11=adicionaItemParaDoacao idDoador=${id3} descricaoItem="calca jeans" quantidade=3 tags=""
+idItem12=adicionaItemParaDoacao idDoador=${id9} descricaoItem="cadeira de rodas" quantidade=2 tags="roda grande,cadeira"
+
+expectError "Entrada invalida: descricao nao pode ser vazia ou nula." adicionaItemParaDoacao idDoador=${id9} descricaoItem="" quantidade=2 tags="roda grande"
+expectError "Entrada invalida: descricao nao pode ser vazia ou nula." adicionaItemParaDoacao idDoador=${id1} descricaoItem= quantidade=2 tags="colchao kingsize,conforto,dormir"
+expectError "Entrada invalida: quantidade deve ser maior que zero." adicionaItemParaDoacao idDoador=${id1} descricaoItem="travesseiro" quantidade=0 tags=""
+expectError "Entrada invalida: quantidade deve ser maior que zero." adicionaItemParaDoacao idDoador=${id1} descricaoItem="travesseiro" quantidade=-1  tags=""
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." adicionaItemParaDoacao idDoador= descricaoItem="travesseiro" quantidade=2 tags=""
+expectError "Usuario nao encontrado: 12345678910." adicionaItemParaDoacao idDoador=12345678910 descricaoItem="travesseiro" quantidade=2 tags="outfit,hollister"
+
+## Exibindo itens ##
+
+expect ${idItem1}" - cadeira de rodas, tags: [roda grande, cadeira], quantidade: 2" exibeItem id=${idItem1} idDoador=${id9}
+expect ${idItem2}" - colchao, tags: [colchao kingsize, conforto, dormir], quantidade: 5" exibeItem id=${idItem2} idDoador=${id1}
+expect ${idItem3}" - cobertor, tags: [lencol, conforto], quantidade: 10" exibeItem id=${idItem3} idDoador=${id8}
+expect ${idItem4}" - travesseiro, tags: [travesseiro de pena], quantidade: 10" exibeItem id=${idItem4} idDoador=${id2}
+expect ${idItem5}" - jaqueta de couro, tags: [outfit, couro de jacare], quantidade: 5" exibeItem id=${idItem5} idDoador=${id7}
+expect ${idItem6}" - camiseta, tags: [outfit, algodao], quantidade: 25" exibeItem id=${idItem6} idDoador=${id4}
+expect ${idItem7}" - cadeira de praia, tags: [dobravel], quantidade: 15" exibeItem id=${idItem7} idDoador=${id1}
+expect ${idItem8}" - cadeira de alimentacao, tags: [25kg, infantil], quantidade: 5" exibeItem id=${idItem8} idDoador=${id4}
+expect ${idItem9}" - cadeira reclinavel, tags: [couro], quantidade: 4" exibeItem id=${idItem9} idDoador=${id3}
+expect ${idItem10}" - computador, tags: [all-in-one], quantidade: 2" exibeItem id=${idItem10} idDoador=${id9}
+
+expectError "Usuario nao encontrado: "${id10}"." exibeItem id=${idItem4} idDoador=${id10}
+expectError "Item nao encontrado: "${idItem4}"." exibeItem id=${idItem4} idDoador=${id3}
+
+## Atualizando itens ##
+
+expect ${idItem3}" - cobertor, tags: [lencol, conforto], quantidade: 15" atualizaItemParaDoacao id=${idItem3} idDoador=${id8} quantidade=15 tags=
+expect ${idItem5}" - jaqueta de couro, tags: [outfit, couro de cobra], quantidade: 5" atualizaItemParaDoacao id=${idItem5} idDoador=${id7} quantidade=0 tags="outfit,couro de cobra" 
+expect ${idItem8}" - cadeira de alimentacao, tags: [35kg, infantil], quantidade: 5" atualizaItemParaDoacao id=${idItem8} idDoador=${id4} quantidade=0 tags="35kg,infantil"
+expect ${idItem10}" - computador, tags: [all-in-one], quantidade: 2" atualizaItemParaDoacao id=${idItem10} idDoador=${id9} quantidade=0 tags= 
+
+expectError "Entrada invalida: id do item nao pode ser negativo." atualizaItemParaDoacao id=-1 idDoador=${id8} quantidade=15 tags= 
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." atualizaItemParaDoacao id=${idItem3} idDoador= quantidade=15 tags=
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." atualizaItemParaDoacao id=${idItem3} idDoador="" quantidade=15 tags=
+expectError "Usuario nao encontrado: "${id10}"." atualizaItemParaDoacao id=${idItem3} idDoador=${id10} quantidade=0 tags= 
+expectError "Item nao encontrado: "${idItem4}"." atualizaItemParaDoacao id=${idItem4} idDoador=${id8} quantidade=-1 tags= 
+
+## Removendo itens ##
+
+removeItemParaDoacao id=${idItem10} idDoador=${id9}
+
+expectError "Item nao encontrado: "${idItem10}"." removeItemParaDoacao id=${idItem10} idDoador=${id9}
+expectError "Entrada invalida: id do item nao pode ser negativo." removeItemParaDoacao id=-5 idDoador=${id9}
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." removeItemParaDoacao id=${idItem9} idDoador=
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." removeItemParaDoacao id=${idItem9} idDoador=""
+expectError "Usuario nao encontrado: "${id10}"." removeItemParaDoacao id=${idItem9} idDoador=${id10}
+expectError "Item nao encontrado: "${idItem9}"." removeItemParaDoacao id=${idItem9} idDoador=${id9}
+expectError "O Usuario nao possui itens cadastrados." removeItemParaDoacao id=${idItem9} idDoador=${id11}

@@ -1,0 +1,41 @@
+## Adicionando novos itens para doacao ##
+
+idItem13=adicionaItemParaDoacao idDoador=${id2} descricaoItem="colchao" quantidade=7 tags="dormir,conforto"
+idItem14=adicionaItemParaDoacao idDoador=${id6} descricaoItem="colchao" quantidade=3 tags="colchao kingsize,dormir"
+idItem15=adicionaItemParaDoacao idDoador=${id4} descricaoItem="cadeira de rodas" quantidade=22 tags="roda grande,80kg,conforto"
+idItem16=adicionaItemParaDoacao idDoador=${id11} descricaoItem="cadeira de rodas" quantidade=1 tags="roda grande,eletrico,80kg"
+idItem17=adicionaItemParaDoacao idDoador=${id8} descricaoItem="jaqueta de couro" quantidade=45 tags="outfit,couro de boi,couro de bode"
+idItem18=adicionaItemParaDoacao idDoador=${id9} descricaoItem="jaqueta de couro" quantidade=21 tags="frio,estilo"
+idItem19=adicionaItemParaDoacao idDoador=${id6} descricaoItem="camiseta" quantidade=100 tags="estilo,poliester,outfit"
+idItem20=adicionaItemParaDoacao idDoador=${id3} descricaoItem="cadeira de rodas" quantidade=13 tags="eletrico,roda grande"
+idItem21=adicionaItemParaDoacao idDoador=${id8} descricaoItem="camiseta" quantidade=15 tags="M,esporte"
+
+## Identificando matches ##
+
+expect ${idItem2}" - colchao, tags: [colchao kingsize, conforto, dormir], quantidade: 5, doador: Elizabeth Ashe/70513372911\
+ | "${idItem13}" - colchao, tags: [dormir, conforto], quantidade: 7, doador: Satya Vaswani/59238650111\
+ | "${idItem14}" - colchao, tags: [colchao kingsize, dormir], quantidade: 3, doador: Lucas Fernandes/13507190272" match idReceptor="84473712044" idItemNecessario=${itemNecId11}
+
+expect ${idItem15}" - cadeira de rodas, tags: [roda grande, 80kg, conforto], quantidade: 22, doador: Cave Johnson/18304715242\
+ | "${idItem16}" - cadeira de rodas, tags: [roda grande, eletrico, 80kg], quantidade: 1, doador: Paroquia de Nossa Senhora da Conceicao/08704413000240\
+ | "${idItem1}" - cadeira de rodas, tags: [roda grande, cadeira], quantidade: 2, doador: Claudio Campelo/58791093499\
+ | "${idItem20}" - cadeira de rodas, tags: [eletrico, roda grande], quantidade: 13, doador: Arthur Morgan/52641947613" match idReceptor="72859801000118" idItemNecessario=${itemNecId10}
+
+expect ${idItem17}" - jaqueta de couro, tags: [outfit, couro de boi, couro de bode], quantidade: 45, doador: Aramis Araujo/49847103331\
+ | "${idItem5}" - jaqueta de couro, tags: [outfit, couro de cobra], quantidade: 5, doador: Carlos Eduardo/12094912484\
+ | "${idItem18}" - jaqueta de couro, tags: [frio, estilo], quantidade: 21, doador: Claudio Campelo/58791093499" match idReceptor="32719454000103" idItemNecessario=${itemNecId12}
+
+expect ${idItem4}" - travesseiro, tags: [travesseiro de pena], quantidade: 10, doador: Satya Vaswani/59238650111" match idReceptor="51567490000143" idItemNecessario=${itemNecId13}
+
+expect ${idItem19}" - camiseta, tags: [estilo, poliester, outfit], quantidade: 100, doador: Lucas Fernandes/13507190272\
+ | "${idItem6}" - camiseta, tags: [outfit, algodao], quantidade: 25, doador: Cave Johnson/18304715242\
+ | "${idItem21}" - camiseta, tags: [M, esporte], quantidade: 15, doador: Aramis Araujo/49847103331" match idReceptor="84473712044" idItemNecessario=${itemNecId14}
+
+expect "" match idReceptor="24875800037" idItemNecessario=${itemNecId9}
+
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." match idReceptor="" idItemNecessario=${itemNecId2}
+expectError "Entrada invalida: id do usuario nao pode ser vazio ou nulo." match idReceptor= idItemNecessario=${itemNecId5}
+expectError "Usuario nao encontrado: 7419287412." match idReceptor="7419287412" idItemNecessario=${itemNecId3}
+expectError "O Usuario deve ser um receptor: "${id1}"." match idReceptor=${id1} idItemNecessario=${itemNecId3}
+expectError "Entrada invalida: id do item nao pode ser negativo." match idReceptor="84473712044" idItemNecessario=-1
+expectError "Item nao encontrado: 1093489." match idReceptor=24875800037 idItemNecessario=1093489

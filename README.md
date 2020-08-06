@@ -12,3 +12,10 @@
 **Unit Tests:** JUnit 5 (https://junit.org/junit5/);
 
 **Acceptance Tests:** EasyAccept (http://easyaccept.sourceforge.net/);
+
+**Contributors:** 
+
+Victor Paz de Farias Braga - https://www.github.com/victorpazb
+Wallyngson - hhtps://www.github.com/wallyngson
+Dascio - https://github.com/DacioSB
+Felipe Emanuel - https://github.com/FelipeEmanuel
